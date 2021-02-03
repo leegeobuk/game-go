@@ -2,11 +2,12 @@ package game
 
 import (
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 // Game implements Game interface of ebitent.Game
-type Game struct{}
+type Game struct {
+	Img *ebiten.Image
+}
 
 // Update frame every second
 func (g *Game) Update() error {
@@ -15,7 +16,7 @@ func (g *Game) Update() error {
 
 // Draw on the screen
 func (g *Game) Draw(screen *ebiten.Image) {
-	ebitenutil.DebugPrint(screen, "Hello, World!")
+	screen.DrawImage(g.Img, nil)
 }
 
 // Layout defines width and height of the screen
